@@ -37,12 +37,10 @@ def svg(filename):
     if not path:
         message = "SVG '{filename}.svg' not found".format(filename=filename)
 
-        # Raise exception if DEBUG is True, else just log a warning.
         if settings.DEBUG:
             raise SVGNotFound(message)
-        else:
-            logger.warning(message)
-            return ''
+        logger.warning(message)
+        return ''
 
     # Sometimes path can be a list/tuple if there's more than one file found
     if isinstance(path, (list, tuple)):
